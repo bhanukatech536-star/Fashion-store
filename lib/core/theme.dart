@@ -3,12 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 
 class AppTheme {
   // Brand Colors
-  static const Color primaryColor = Color(0xFF1E112A); // Deep Royal Purple
-  static const Color accentColor = Color(0xFFD6A054);  // Elegant Gold
-  static const Color backgroundColor = Color(0xFFF8F8F8); // Off-white luxury
+  static const Color primaryColor = Color(0xFF2D2D2D);   // Charcoal Black
+  static const Color accentColor  = Color(0xFFE8A87C);   // Warm Peach
+  static const Color backgroundColor = Color(0xFFF5F0EB); // Warm Cream
   static const Color textDark = Color(0xFF1A1A1A);
   static const Color textLight = Color(0xFF757575);
   static const Color errorColor = Color(0xFFE57373);
+  static const Color navBarLight = Color(0xFF2D2D2D);     // Nav bar - dark
+  static const Color navBarDark  = Color(0xFF1A1A1A);     // Nav bar - darker
 
   // Light Theme
   static ThemeData get lightTheme {
@@ -22,10 +24,10 @@ class AppTheme {
 
   static ThemeData _baseTheme(Brightness brightness) {
     bool isDark = brightness == Brightness.dark;
-    Color scaffoldBg = isDark ? const Color(0xFF0F0817) : backgroundColor;
+    Color scaffoldBg = isDark ? const Color(0xFF121212) : backgroundColor;
     Color textCol = isDark ? Colors.white : textDark;
     Color subTextCol = isDark ? Colors.grey.shade400 : textLight;
-    Color cardCol = isDark ? const Color(0xFF1E112A) : Colors.white;
+    Color cardCol = isDark ? const Color(0xFF1E1E1E) : Colors.white;
 
     return ThemeData(
       brightness: brightness,

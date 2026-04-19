@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen>
                             ),
                             const SizedBox(height: 12),
                             Text(
-                              'LUXÉ',
+                              'BH CLOTHS',
                               style: TextStyle(
                                 fontSize: 28,
                                 fontWeight: FontWeight.bold,
@@ -143,7 +143,7 @@ class _LoginScreenState extends State<LoginScreen>
                   FadeInWidget(
                     delay: const Duration(milliseconds: 260),
                     child: Text(
-                      'Sign in to your luxury fashion account.',
+                      'Sign in to your BH Cloths account.',
                       style: Theme.of(context).textTheme.bodyMedium,
                     ),
                   ),

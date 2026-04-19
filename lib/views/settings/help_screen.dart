@@ -38,12 +38,12 @@ class HelpScreen extends StatelessWidget {
           ListTile(
             leading: Icon(Icons.email_outlined),
             title: Text('Email Support'),
-            subtitle: Text('support@luxefashion.com'),
+            subtitle: Text('support@bhcloths.com'),
           ),
           ListTile(
             leading: Icon(Icons.phone_outlined),
             title: Text('Phone Support'),
-            subtitle: Text('+1 (800) LUXE-FASHION'),
+            subtitle: Text('+1 (800) BH-CLOTHS'),
           ),
         ],
       ),

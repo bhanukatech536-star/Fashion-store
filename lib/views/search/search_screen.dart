@@ -35,7 +35,7 @@ class _SearchScreenState extends State<SearchScreen> {
           controller: _searchController,
           autofocus: true,
           decoration: const InputDecoration(
-            hintText: 'Search for luxury fashion...',
+            hintText: 'Search BH Cloths...',
             border: InputBorder.none,
             enabledBorder: InputBorder.none,
             focusedBorder: InputBorder.none,

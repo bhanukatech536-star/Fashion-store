@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
     return Consumer<ThemeController>(
       builder: (context, themeController, child) {
         return MaterialApp(
-          title: 'Fashion Store',
+          title: 'BH Cloths',
           theme: AppTheme.lightTheme,
           darkTheme: AppTheme.darkTheme,
           themeMode: themeController.themeMode,

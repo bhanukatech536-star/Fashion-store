@@ -101,7 +101,7 @@ class _RegisterScreenState extends State<RegisterScreen>
                           ),
                           const SizedBox(height: 8),
                           Text(
-                            'Start your premium fashion journey.',
+                            'Start your BH Cloths journey.',
                             style: Theme.of(context).textTheme.bodyMedium,
                           ),
                         ],

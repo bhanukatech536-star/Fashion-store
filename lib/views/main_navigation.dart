@@ -111,13 +111,16 @@ class _AnimatedNavBar extends StatelessWidget {
       [Icons.person_outline, Icons.person],
     ];
 
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final navBg = isDark ? AppTheme.navBarDark : AppTheme.navBarLight;
+
     return Container(
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: navBg,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.06),
-            blurRadius: 16,
+            color: Colors.black.withOpacity(0.15),
+            blurRadius: 20,
             offset: const Offset(0, -4),
           ),
         ],
@@ -139,7 +142,7 @@ class _AnimatedNavBar extends StatelessWidget {
                       horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
                     color: selected
-                        ? AppTheme.primaryColor.withOpacity(0.10)
+                        ? AppTheme.accentColor.withOpacity(0.20)
                         : Colors.transparent,
                     borderRadius: BorderRadius.circular(16),
                   ),
@@ -157,8 +160,8 @@ class _AnimatedNavBar extends StatelessWidget {
                               (icons[i][selected ? 1 : 0]) as IconData,
                               key: ValueKey(selected),
                               color: selected
-                                  ? AppTheme.primaryColor
-                                  : Colors.grey,
+                                  ? AppTheme.accentColor
+                                  : Colors.grey.shade500,
                               size: 22,
                             ),
                           ),
@@ -198,7 +201,7 @@ class _AnimatedNavBar extends StatelessWidget {
                                 child: Text(
                                   labels[i],
                                   style: const TextStyle(
-                                    color: AppTheme.primaryColor,
+                                    color: AppTheme.accentColor,
                                     fontWeight: FontWeight.bold,
                                     fontSize: 13,
                                   ),

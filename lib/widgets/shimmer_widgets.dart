@@ -47,7 +47,7 @@ class ProductCardSkeleton extends StatelessWidget {
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(24),
           boxShadow: [
             BoxShadow(
               color: Colors.black.withOpacity(0.05),
@@ -63,7 +63,7 @@ class ProductCardSkeleton extends StatelessWidget {
             Expanded(
               child: ClipRRect(
                 borderRadius:
-                    const BorderRadius.vertical(top: Radius.circular(16)),
+                    const BorderRadius.vertical(top: Radius.circular(24)),
                 child: Container(color: Colors.white),
               ),
             ),
@@ -103,7 +103,7 @@ class ProductGridSkeleton extends StatelessWidget {
         mainAxisSpacing: 16,
       ),
       itemCount: count,
-      itemBuilder: (_, __) => const ProductCardSkeleton(),
+      itemBuilder: (_, index) => const ProductCardSkeleton(),
     );
   }
 }
@@ -121,7 +121,7 @@ class BannerSkeleton extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(20),
+          borderRadius: BorderRadius.circular(24),
         ),
       ),
     );
@@ -141,7 +141,7 @@ class CartItemSkeleton extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(24),
         ),
         child: Row(
           children: [
@@ -186,7 +186,7 @@ class OrderItemSkeleton extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
           color: Colors.white,
-          borderRadius: BorderRadius.circular(16),
+          borderRadius: BorderRadius.circular(24),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
