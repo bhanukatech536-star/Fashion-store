@@ -118,46 +118,43 @@ class ProductCard extends StatelessWidget {
               ),
             ),
             // Info Section
-            Expanded(
-              flex: 1,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 12.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      product.name,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                        fontFamily: 'Playfair Display',
-                        color: isDark ? Colors.white : AppTheme.textDark,
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 14.0, vertical: 12.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    product.name,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Playfair Display',
+                      color: isDark ? Colors.white : AppTheme.textDark,
+                    ),
+                  ),
+                  const SizedBox(height: 6),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        '\$${product.price.toStringAsFixed(2)}',
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w800,
+                          fontFamily: 'Inter',
+                          color: AppTheme.accentColor,
+                        ),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '\$${product.price.toStringAsFixed(2)}',
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w800,
-                            fontFamily: 'Inter',
-                            color: AppTheme.accentColor,
-                          ),
-                        ),
-                        Icon(
-                          Icons.add_circle_outline,
-                          size: 20,
-                          color: isDark ? Colors.white70 : AppTheme.primaryColor,
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
+                      Icon(
+                        Icons.add_circle_outline,
+                        size: 20,
+                        color: isDark ? Colors.white70 : AppTheme.primaryColor,
+                      ),
+                    ],
+                  ),
+                ],
               ),
             ),
           ],
