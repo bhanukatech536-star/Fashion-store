@@ -114,12 +114,14 @@ class _AnimatedNavBar extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final navBg = isDark ? AppTheme.navBarDark : AppTheme.navBarLight;
 
+    final unselectedColor = isDark ? Colors.grey.shade400 : Colors.grey.shade600;
+
     return Container(
       decoration: BoxDecoration(
         color: navBg,
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withOpacity(0.15),
+            color: isDark ? Colors.black.withOpacity(0.3) : Colors.black.withOpacity(0.08),
             blurRadius: 20,
             offset: const Offset(0, -4),
           ),
@@ -161,7 +163,7 @@ class _AnimatedNavBar extends StatelessWidget {
                               key: ValueKey(selected),
                               color: selected
                                   ? AppTheme.accentColor
-                                  : Colors.grey.shade500,
+                                  : unselectedColor,
                               size: 22,
                             ),
                           ),

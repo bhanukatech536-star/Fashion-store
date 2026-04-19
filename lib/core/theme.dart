@@ -9,7 +9,7 @@ class AppTheme {
   static const Color textDark = Color(0xFF1A1A1A);
   static const Color textLight = Color(0xFF757575);
   static const Color errorColor = Color(0xFFE57373);
-  static const Color navBarLight = Color(0xFF2D2D2D);     // Nav bar - dark
+  static const Color navBarLight = Colors.white;         // Nav bar - light
   static const Color navBarDark  = Color(0xFF1A1A1A);     // Nav bar - darker
 
   // Light Theme
