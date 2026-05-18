@@ -6,6 +6,7 @@ class CustomTextField extends StatelessWidget {
   final TextEditingController controller;
   final bool isPassword;
   final TextInputType keyboardType;
+  final int maxLines;
   final String? Function(String?)? validator;
 
   const CustomTextField({
@@ -15,20 +16,23 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     this.isPassword = false,
     this.keyboardType = TextInputType.text,
+    this.maxLines = 1,
     this.validator,
   });
 
   @override
   Widget build(BuildContext context) {
+    final labelColor = Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black87;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 14,
             fontWeight: FontWeight.w500,
-            color: Colors.black87,
+            color: labelColor,
           ),
         ),
         const SizedBox(height: 8),
@@ -36,6 +40,7 @@ class CustomTextField extends StatelessWidget {
           controller: controller,
           obscureText: isPassword,
           keyboardType: keyboardType,
+          maxLines: isPassword ? 1 : maxLines,
           validator: validator,
           decoration: InputDecoration(
             hintText: hint,

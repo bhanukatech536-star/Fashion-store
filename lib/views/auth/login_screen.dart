@@ -58,9 +58,11 @@ class _LoginScreenState extends State<LoginScreen>
             _passwordController.text,
           );
       if (!success && mounted) {
+        final msg = context.read<AuthController>().lastError ??
+            'Login failed. Please try again.';
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: const Text('Login failed. Please try again.'),
+            content: Text(msg),
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12)),

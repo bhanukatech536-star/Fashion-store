@@ -59,9 +59,11 @@ class _RegisterScreenState extends State<RegisterScreen>
       if (success && mounted) {
         Navigator.pop(context);
       } else if (mounted) {
+        final msg = context.read<AuthController>().lastError ??
+            'Registration failed. Please try again.';
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: const Text('Registration failed. Please try again.'),
+            content: Text(msg),
             behavior: SnackBarBehavior.floating,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12)),
