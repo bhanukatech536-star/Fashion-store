@@ -30,9 +30,9 @@ class ProfileScreen extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 50,
-                  backgroundColor: AppTheme.primaryColor.withOpacity(0.1),
+                  backgroundColor: AppTheme.primaryColor.withValues(alpha: 0.1),
                   child: Text(
-                    user.name.substring(0, 1).toUpperCase(),
+                    user.displayInitial,
                     style: const TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
@@ -42,7 +42,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  user.name,
+                  user.name.isNotEmpty ? user.name : user.email,
                   style: Theme.of(context).textTheme.displayMedium,
                 ),
                 const SizedBox(height: 8),
@@ -50,10 +50,28 @@ class ProfileScreen extends StatelessWidget {
                   user.email,
                   style: Theme.of(context).textTheme.bodyMedium,
                 ),
+                if (user.phone.isNotEmpty) ...[
+                  const SizedBox(height: 4),
+                  Text(
+                    user.phone,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                  ),
+                ],
+                if (user.address.isNotEmpty) ...[
+                  const SizedBox(height: 4),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 32),
+                    child: Text(
+                      user.address,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                  ),
+                ],
                 const SizedBox(height: 8),
                 TextButton(
-                  onPressed: () {
-                    Navigator.push(
+                  onPressed: () async {
+                    await Navigator.push(
                       context,
                       AppPageRoute(child: const EditProfileScreen()),
                     );
@@ -143,6 +161,8 @@ class ProfileScreen extends StatelessWidget {
     required VoidCallback onTap,
     Color? color,
   }) {
+    final iconColor = color ?? Theme.of(context).textTheme.bodyLarge?.color;
+
     return StaggeredItem(
       index: index,
       child: ListTile(
@@ -150,10 +170,10 @@ class ProfileScreen extends StatelessWidget {
         leading: Container(
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: (color ?? Theme.of(context).textTheme.bodyLarge?.color ?? Colors.black).withOpacity(0.05),
+            color: (iconColor ?? Colors.black).withValues(alpha: 0.05),
             shape: BoxShape.circle,
           ),
-          child: Icon(icon, color: color ?? Theme.of(context).textTheme.bodyLarge?.color),
+          child: Icon(icon, color: iconColor),
         ),
         title: Text(
           title,

@@ -32,4 +32,10 @@ class UserModel {
       'phone': phone,
     };
   }
+
+  String get displayInitial {
+    if (name.trim().isNotEmpty) return name.trim()[0].toUpperCase();
+    if (email.isNotEmpty) return email[0].toUpperCase();
+    return '?';
+  }
 }

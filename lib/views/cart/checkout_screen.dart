@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../../controllers/cart_controller.dart';
 import '../../controllers/order_controller.dart';
 import '../../controllers/auth_controller.dart';
+import '../../models/user_model.dart';
 import '../../widgets/custom_button.dart';
 import '../../widgets/custom_textfield.dart';
 import '../../widgets/animations.dart';
@@ -42,22 +43,52 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
       final authController = context.read<AuthController>();
 
       final items = cartController.items.values.toList();
-      final userId = authController.currentUser?.id ?? 'guest';
+      final userId = authController.currentUser?.id;
+      if (userId == null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Please sign in to place an order')),
+        );
+        return;
+      }
 
-      await orderController.placeOrder(
+      final address = _addressController.text.trim();
+      final ok = await orderController.placeOrder(
         userId,
         items,
         widget.totalPrice,
-        _addressController.text,
+        address,
       );
 
-      if (mounted) {
-        cartController.clearCart();
-        Navigator.pushReplacement(
-          context,
-          AppPageRoute(child: const PaymentSuccessScreen()),
+      if (!mounted) return;
+
+      if (!ok) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Order failed. Check Firestore rules and try again.'),
+          ),
+        );
+        return;
+      }
+
+      // Save shipping address to Firebase profile
+      final user = authController.currentUser;
+      if (user != null && address.isNotEmpty && user.address != address) {
+        await authController.updateCurrentUser(
+          UserModel(
+            id: user.id,
+            name: user.name,
+            email: user.email,
+            address: address,
+            phone: user.phone,
+          ),
         );
       }
+
+      cartController.clearCart();
+      Navigator.pushReplacement(
+        context,
+        AppPageRoute(child: const PaymentSuccessScreen()),
+      );
     }
   }
 

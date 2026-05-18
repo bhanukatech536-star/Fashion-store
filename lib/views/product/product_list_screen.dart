@@ -13,7 +13,7 @@ class ProductListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productController = context.watch<ProductController>();
-    final categories = productController.categories;
+    final categories = productController.filterCategories;
     final isLoading = productController.isLoading;
 
     return SafeArea(
